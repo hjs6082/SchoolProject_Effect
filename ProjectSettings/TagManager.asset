@@ -9,6 +9,9 @@ TagManager:
   - Circle3
   - Circle4
   - Circle5
+  - Rain
+  - Boss
+  - Snow
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

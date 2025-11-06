@@ -10,6 +10,8 @@ public class Input2D : MonoBehaviour
     public bool attack = false;
     [HideInInspector]
     public bool slide = false;
+    //[HideInInspector]
+    public bool dash = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +26,7 @@ public class Input2D : MonoBehaviour
         Jump();
         Attack();
         Slide();
+        Dash();
     }
 
     private void Movement()
@@ -60,7 +63,7 @@ public class Input2D : MonoBehaviour
 
     void Slide()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("´­·¶½À´Ï´Ù.");
             slide = true;
@@ -68,6 +71,19 @@ public class Input2D : MonoBehaviour
         else
         {
             slide = false;
+        }
+    }
+
+    void Dash()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            Debug.Log("´­·¶½À´Ï´Ù.");
+            dash = true;
+        }
+        else
+        {
+            dash = false;
         }
     }
 }

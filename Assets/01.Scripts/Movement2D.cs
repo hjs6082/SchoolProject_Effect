@@ -11,6 +11,8 @@ public class Movement2D : MonoBehaviour
     [SerializeField] private float accleration = 10f;
     [SerializeField] private bool constantSpeed = true;
     [SerializeField] private float jumpPower = 10f;
+    [SerializeField] private float forceX = 10f;
+    [SerializeField] private float limitSpeed = 100f;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class Movement2D : MonoBehaviour
         Flip();
         if (constantSpeed == true)
         {
-            body.linearVelocityX = VelocityX();
+            VelocityX();
         }
         else
         {
@@ -33,6 +35,8 @@ public class Movement2D : MonoBehaviour
         }
 
         if (input.jump == true) body.linearVelocityY = jumpPower;
+
+        SpeedLimit();
     }
 
     void Flip()
@@ -41,13 +45,27 @@ public class Movement2D : MonoBehaviour
         else if (direction > 0f) render.flipX = false;
     }
 
-    float VelocityX()
+    void VelocityX()
     {
-        return direction * speed;
+        if(input.move.x != 0 && input.dash)
+        {
+            Vector2 force = new Vector2(forceX * direction, 0f);
+            body.AddForce(force, ForceMode2D.Impulse);
+        }
+        else
+        {
+            body.linearVelocityX = direction * speed;
+        }
     }
 
     float AcclerationX()
     {
         return direction * accleration * Time.deltaTime;
+    }
+
+    void SpeedLimit()
+    {
+        if (Mathf.Abs(body.linearVelocityX) > limitSpeed)
+            body.linearVelocityX = Mathf.Sign(body.linearVelocityX) * limitSpeed;
     }
 }
