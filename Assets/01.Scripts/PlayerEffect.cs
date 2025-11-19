@@ -130,7 +130,8 @@ public class PlayerEffect : MonoBehaviour
 
     void VFX03Effect()
     {
-        Vector3 pos = new Vector3(0f, -2f, 0f);
+        float height = this.gameObject.GetComponent<BoxCollider2D>().bounds.extents.y;
+        Vector3 pos = new Vector3(0f, -(height/2f), 0f);
         GameObject g = Instantiate(vfx03Prefab, transform.position + pos, Quaternion.identity, transform);
         Destroy(g, 0.7f);
     }
