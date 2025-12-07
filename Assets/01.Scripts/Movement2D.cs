@@ -13,6 +13,7 @@ public class Movement2D : MonoBehaviour
     [SerializeField] private float jumpPower = 10f;
     [SerializeField] private float forceX = 10f;
     [SerializeField] private float limitSpeed = 100f;
+    [SerializeField] private LayerMask layer;
 
     private void Start()
     {
@@ -67,5 +68,18 @@ public class Movement2D : MonoBehaviour
     {
         if (Mathf.Abs(body.linearVelocityX) > limitSpeed)
             body.linearVelocityX = Mathf.Sign(body.linearVelocityX) * limitSpeed;
+    }
+
+    bool IsGround()
+    {
+        Vector2 size = this.gameObject.GetComponent<BoxCollider2D>().size;
+        if (Physics2D.BoxCast(transform.position, size, 0f, -transform.up, 0.1f, layer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

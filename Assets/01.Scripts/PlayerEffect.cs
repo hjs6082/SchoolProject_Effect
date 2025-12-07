@@ -53,7 +53,7 @@ public class PlayerEffect : MonoBehaviour
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
     }
 
-    void Glow()
+    public void Glow()
     {
         Color c = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         float emission = Mathf.PingPong(Time.time * glowSpeed, 1f);
@@ -93,6 +93,11 @@ public class PlayerEffect : MonoBehaviour
         else if (collision.gameObject.CompareTag("Snow"))
         {
             VFX06Effect();
+        }
+        else if (collision.gameObject.CompareTag("Diamond"))
+        {
+            VFX01Effect(collision.gameObject.transform.position);
+            Destroy(collision.gameObject);
         }
     }
 

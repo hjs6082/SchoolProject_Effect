@@ -12,6 +12,9 @@ TagManager:
   - Rain
   - Boss
   - Snow
+  - Diamond
+  - Enemy
+  - BossGirl
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Player
   - 
   - 
   - 

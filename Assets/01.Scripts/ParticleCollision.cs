@@ -16,13 +16,17 @@ public class ParticleCollision : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Boss"))
+        if (other.CompareTag("Boss") || other.CompareTag("BossGirl"))
         {
             SpriteRenderer sr = other.GetComponent<SpriteRenderer>();
             float r = sr.color.r;
             float g = sr.color.g - 0.001f;
             float b = sr.color.b - 0.001f;
             sr.color = new Color(r, g, b);
+        }
+        else if(other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyController>().life -= 1f;
         }
     }
 }
