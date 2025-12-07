@@ -15,6 +15,7 @@ TagManager:
   - Diamond
   - Enemy
   - BossGirl
+  - UIManager
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - Effect
   - 
   - 
   - 
@@ -51,6 +52,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effect
+    uniqueID: 3399357431
     locked: 0
   m_RenderingLayers:
   - Default

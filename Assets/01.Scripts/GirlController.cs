@@ -42,7 +42,14 @@ public class GirlController : MonoBehaviour
         if(hit.collider)
         {
             waited += Time.deltaTime;
-            body.linearVelocity = dir * 5f;
+            if (Vector2.Distance(player.transform.position, transform.position) > 1f)
+            {
+                body.linearVelocity = dir * 5f;
+            }
+            else
+            {
+                body.linearVelocity = Vector2.zero;
+            }
             if(hit.distance < 10f && waited > maxWait)
             {
                 anim.SetTrigger("Shoot");

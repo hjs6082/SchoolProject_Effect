@@ -43,6 +43,8 @@ public class KunaiController : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerEffect>().Glow();
                 pos = collision.gameObject.transform.position;
+                GameObject g = GameObject.FindGameObjectWithTag("UIManager");
+                g.GetComponent<UIManager>().AddPlayerDamage();
             }
             Instantiate(hitPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);

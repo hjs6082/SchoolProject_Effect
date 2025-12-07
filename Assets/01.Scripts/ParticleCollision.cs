@@ -23,6 +23,8 @@ public class ParticleCollision : MonoBehaviour
             float g = sr.color.g - 0.001f;
             float b = sr.color.b - 0.001f;
             sr.color = new Color(r, g, b);
+            GameObject manager = GameObject.FindGameObjectWithTag("UIManager");
+            manager.GetComponent<UIManager>().AddBossDamage();
         }
         else if(other.CompareTag("Enemy"))
         {
